@@ -30,7 +30,30 @@ class Cart {
         Shoe(brand: "Nike", name: "Dunk Low ", price: "$400.00")
     ]
     
-    private var selectedShoes = [Shoe]()
+    struct selectedShoe {
+        let shoe: Shoe
+        var quantity: Int = 0
+        
+    }
+    
+    private var selectedShoes = [selectedShoe]()
+    
+    func selectShoe(shoe: Shoe) {
+        let newSelection = selectedShoe(shoe: shoe, quantity: 1)
+        selectedShoes.append(newSelection)
+    }
+    
+    func addQuantity(index: Int){
+        selectedShoes[index].quantity += 1
+    }
+    
+    func subtractQuantity(index: Int) {
+        if(selectedShoes[index].quantity - 1 == 0) {
+            selectedShoes.remove(at: index)
+        } else {
+            selectedShoes[index].quantity -= 1
+        }
+    }
     
 }
 
