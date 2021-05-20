@@ -7,8 +7,8 @@
 
 import Foundation
 
-class Cart {
-    static let cart = Cart()
+class CollectionService {
+    static let collection = CollectionService()
     
     private let shoes = [
         Shoe(brand: "Nike", name: "Space Hippie", price: "$268.00)"),
@@ -36,6 +36,7 @@ class Cart {
         
     }
     
+    
     private var selectedShoes = [selectedShoe]()
     
     func selectShoe(shoe: Shoe) {
@@ -53,6 +54,14 @@ class Cart {
         } else {
             selectedShoes[index].quantity -= 1
         }
+    }
+    
+    func getTopShoes() -> [Shoe] {
+        return topShoes
+    }
+    
+    func getAllShoes() -> [Shoe] {
+        return shoes
     }
     
 }

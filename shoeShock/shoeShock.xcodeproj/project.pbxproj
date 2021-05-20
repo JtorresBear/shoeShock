@@ -14,8 +14,9 @@
 		AA57EC73264A7A6E00160A09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA57EC72264A7A6E00160A09 /* Assets.xcassets */; };
 		AA57EC76264A7A6E00160A09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA57EC74264A7A6E00160A09 /* LaunchScreen.storyboard */; };
 		AA57EC7F264A7DA000160A09 /* Shoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57EC7E264A7DA000160A09 /* Shoe.swift */; };
-		AA57EC82264A7E0900160A09 /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57EC81264A7E0900160A09 /* CartService.swift */; };
-		AA57EC85264A873800160A09 /* TopShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57EC84264A873800160A09 /* TopShoeCell.swift */; };
+		AA57EC82264A7E0900160A09 /* CollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57EC81264A7E0900160A09 /* CollectionService.swift */; };
+		AA57EC85264A873800160A09 /* ShoeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57EC84264A873800160A09 /* ShoeCell.swift */; };
+		AA6F214C26561276007BA51D /* OtherShoesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F214B26561276007BA51D /* OtherShoesCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +29,9 @@
 		AA57EC75264A7A6E00160A09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA57EC77264A7A6E00160A09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA57EC7E264A7DA000160A09 /* Shoe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shoe.swift; sourceTree = "<group>"; };
-		AA57EC81264A7E0900160A09 /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
-		AA57EC84264A873800160A09 /* TopShoeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopShoeCell.swift; sourceTree = "<group>"; };
+		AA57EC81264A7E0900160A09 /* CollectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionService.swift; sourceTree = "<group>"; };
+		AA57EC84264A873800160A09 /* ShoeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeCell.swift; sourceTree = "<group>"; };
+		AA6F214B26561276007BA51D /* OtherShoesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherShoesCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +64,12 @@
 		AA57EC68264A7A6C00160A09 /* shoeShock */ = {
 			isa = PBXGroup;
 			children = (
+				AA6F214A26522C5E007BA51D /* Controllers */,
 				AA57EC83264A871B00160A09 /* View */,
 				AA57EC80264A7DF300160A09 /* Services */,
 				AA57EC7D264A7D9500160A09 /* Models */,
 				AA57EC69264A7A6C00160A09 /* AppDelegate.swift */,
 				AA57EC6B264A7A6C00160A09 /* SceneDelegate.swift */,
-				AA57EC6D264A7A6C00160A09 /* DiscoverShoeVC.swift */,
 				AA57EC6F264A7A6C00160A09 /* Main.storyboard */,
 				AA57EC72264A7A6E00160A09 /* Assets.xcassets */,
 				AA57EC74264A7A6E00160A09 /* LaunchScreen.storyboard */,
@@ -87,7 +89,7 @@
 		AA57EC80264A7DF300160A09 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AA57EC81264A7E0900160A09 /* CartService.swift */,
+				AA57EC81264A7E0900160A09 /* CollectionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -95,9 +97,18 @@
 		AA57EC83264A871B00160A09 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AA57EC84264A873800160A09 /* TopShoeCell.swift */,
+				AA57EC84264A873800160A09 /* ShoeCell.swift */,
+				AA6F214B26561276007BA51D /* OtherShoesCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AA6F214A26522C5E007BA51D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA57EC6D264A7A6C00160A09 /* DiscoverShoeVC.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,9 +181,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA57EC82264A7E0900160A09 /* CartService.swift in Sources */,
+				AA57EC82264A7E0900160A09 /* CollectionService.swift in Sources */,
 				AA57EC6E264A7A6C00160A09 /* DiscoverShoeVC.swift in Sources */,
-				AA57EC85264A873800160A09 /* TopShoeCell.swift in Sources */,
+				AA57EC85264A873800160A09 /* ShoeCell.swift in Sources */,
+				AA6F214C26561276007BA51D /* OtherShoesCollectionViewCell.swift in Sources */,
 				AA57EC7F264A7DA000160A09 /* Shoe.swift in Sources */,
 				AA57EC6A264A7A6C00160A09 /* AppDelegate.swift in Sources */,
 				AA57EC6C264A7A6C00160A09 /* SceneDelegate.swift in Sources */,
@@ -332,7 +344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.JuanTorres.shoeShock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -351,7 +363,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.JuanTorres.shoeShock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
