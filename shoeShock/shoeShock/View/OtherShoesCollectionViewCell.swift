@@ -32,13 +32,13 @@ class OtherShoesCollectionViewCell: UICollectionViewCell {
             if let shoe = self.shoe {
                 CollectionService.collection.selectShoe(shoe: shoe )
             }
-            heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            //heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         if shoeSelected {
             if let shoe = self.shoe {
                 CollectionService.collection.removeSelectedShoe(shoe: shoe)
             }
-            heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            //heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
         shoeSelected.toggle()
         print(CollectionService.collection.getSelectedShoes().count)

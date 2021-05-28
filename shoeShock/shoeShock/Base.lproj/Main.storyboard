@@ -246,6 +246,10 @@
                                 <state key="normal" title="Add To Cart">
                                     <color key="titleColor" systemColor="systemPinkColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="addToCartTapped:" destination="fNr-Pe-69m" eventType="touchUpInside" id="cs3-nn-OCD"/>
+                                    <segue destination="pq2-S9-Aym" kind="unwind" unwindAction="unwind:" id="qGO-0D-JlJ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRICE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojM-5D-Cop">
                                 <rect key="frame" x="166.5" y="557" width="81.5" height="36"/>
@@ -291,6 +295,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unx-JP-5ku" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="pq2-S9-Aym" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="882.60869565217399" y="912.72321428571422"/>
         </scene>

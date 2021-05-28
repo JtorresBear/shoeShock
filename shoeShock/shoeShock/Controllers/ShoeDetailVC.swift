@@ -33,5 +33,11 @@ class ShoeDetailVC: UIViewController {
         shoePrice.text = shoe.price
         shoeDescription.text = shoe.shoeDescription
     }
-
+    
+    @IBAction func addToCartTapped(_ sender: Any) {
+        guard let shoe = self.shoe else {return}
+        CollectionService.collection.selectShoe(shoe: shoe)
+        print(CollectionService.collection.getSelectedShoes().count)
+    }
+    
 }
