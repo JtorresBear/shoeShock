@@ -14,12 +14,15 @@ class DiscoverShoeVC: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     let shoeCollection = CollectionService.collection
     
+    override func viewWillAppear(_ animated: Bool) {
+        topShoesCollection.reloadData()
+        otherShoesCollection.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        topShoesCollection.delegate = self
-        topShoesCollection.dataSource = self
-        otherShoesCollection.delegate = self
-        otherShoesCollection.dataSource = self
+        createCartButton()
+        createDelegatesAndDataSources()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,6 +49,44 @@ class DiscoverShoeVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }
         return TopShoeCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if(collectionView == topShoesCollection){
+            let shoe = shoeCollection.getTopShoes()[indexPath.row]
+            performSegue(withIdentifier: "ShoeDetail", sender: shoe)
+        }
+        if(collectionView == otherShoesCollection) {
+            let shoe = shoeCollection.getAllShoes()[indexPath.row]
+            performSegue(withIdentifier: "ShoeDetail", sender: shoe)
+        }
+    }
+    
+    
+    func createCartButton(){
+        let barButton = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .done, target: self, action: #selector(cartButtonTapped))
+        navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc func cartButtonTapped(){
+        performSegue(withIdentifier: "showCart", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "ShoeDetail") {
+            let shoeDetailVC = segue.destination as! ShoeDetailVC
+            shoeDetailVC.shoe = sender as! Shoe
+        }
+    }
+    
+
+
+    
+    func createDelegatesAndDataSources(){
+        topShoesCollection.delegate = self
+        topShoesCollection.dataSource = self
+        otherShoesCollection.delegate = self
+        otherShoesCollection.dataSource = self
     }
 
 }

@@ -11,4 +11,6 @@ struct Shoe {
     var brand : String
     var name  : String
     var price : String
+    var shoeDescription: String
+    var number: Int
 }
