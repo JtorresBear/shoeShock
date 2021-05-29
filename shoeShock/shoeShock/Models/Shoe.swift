@@ -10,7 +10,7 @@ import Foundation
 struct Shoe {
     var brand : String
     var name  : String
-    var price : String
+    var price : Double
     var shoeDescription: String
     var number: Int
 }

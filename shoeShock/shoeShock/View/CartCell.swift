@@ -15,5 +15,10 @@ class CartCell: UITableViewCell {
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var shoeQuantity: UILabel!
 
-    
+    func updateCell(shoe: Shoe, quantity: Double){
+        shoeName.text   = shoe.name
+        shoePrice.text  = "$\(shoe.price)0"
+        shoeImage.image = UIImage(named: "Nike\(shoe.number)")
+        shoeQuantity.text = String(quantity)
+    }
 }

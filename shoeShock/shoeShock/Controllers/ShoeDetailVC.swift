@@ -14,12 +14,17 @@ class ShoeDetailVC: UIViewController {
     @IBOutlet weak var shoeName: UILabel!
     @IBOutlet weak var shoePrice: UILabel!
     @IBOutlet weak var addToCartButton: UIButton!
+    @IBOutlet weak var quantityStepper: UIStepper!
+    @IBOutlet weak var quantityLabel: UILabel!
     
     var shoe: Shoe?
+    var stepperCount = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initShoe(shoe: shoe!)
+        quantityLabel.text = quantityStepper.stepValue.description
+        
     }
     
     func initShoe(shoe: Shoe) {
@@ -30,14 +35,21 @@ class ShoeDetailVC: UIViewController {
     func updateViewController(shoe: Shoe){
         shoeName.text = shoe.name
         shoeImage.image = UIImage(named: "Nike\(shoe.number)")
-        shoePrice.text = shoe.price
+        shoePrice.text = "$\(shoe.price)0"
         shoeDescription.text = shoe.shoeDescription
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
-        guard let shoe = self.shoe else {return}
-        CollectionService.collection.selectShoe(shoe: shoe)
+        guard let shoe = self.shoe, let quantity = Double(quantityLabel.text!) else {return}
+        CollectionService.collection.selectShoe(shoe: shoe, quantity: quantity)
         print(CollectionService.collection.getSelectedShoes().count)
     }
     
+    @IBAction func stepperTapped(_ sender: UIStepper) {
+        quantityLabel.text = String(sender.value)
+        stepperCount = sender.value
+        guard let price = shoe?.price else {return}
+        let currentPrice = price * stepperCount
+        shoePrice.text = "$\(currentPrice)0"
+    }
 }

@@ -20,7 +20,7 @@ class OtherShoesCollectionViewCell: UICollectionViewCell {
     func updateViews(shoe: Shoe, row: Int){
         brandName.text  = shoe.brand
         shoeName.text   = shoe.name
-        shoePrice.text  = shoe.price
+        shoePrice.text  = "$\(shoe.price)0"
         shoeImage.image = UIImage(named: "Nike\(shoe.number)")
         heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
         self.shoe = shoe
@@ -30,7 +30,7 @@ class OtherShoesCollectionViewCell: UICollectionViewCell {
         
         if !shoeSelected {
             if let shoe = self.shoe {
-                CollectionService.collection.selectShoe(shoe: shoe )
+                CollectionService.collection.selectShoe(shoe: shoe, quantity: 1.0)
             }
             //heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
