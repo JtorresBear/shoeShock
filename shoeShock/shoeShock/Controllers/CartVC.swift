@@ -10,14 +10,17 @@ import UIKit
 class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var cartTable: UITableView!
-    var selectedShoes = CollectionService.collection.getSelectedShoes()
+    @IBOutlet weak var totalShoes: UILabel!
+    @IBOutlet weak var totalPrice: UILabel!
     
+    
+    var selectedShoes = CollectionService.collection.getSelectedShoes()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cartTable.delegate = self
         cartTable.dataSource = self
-        
+        shoeTotalPrice()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,12 +33,22 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = cartTable.dequeueReusableCell(withIdentifier: "SelectedShoe", for: indexPath) as? CartCell {
+            cell.cartVC = self 
+            cell.selectedShoe = selectedShoes[indexPath.row].shoe
             cell.updateCell(shoe: selectedShoes[indexPath.row].shoe, quantity: selectedShoes[indexPath.row].quantity)
             print("is doing something")
             return cell
         }
         print("is doing nothing")
         return CartCell()
+    }
+    
+    func shoeTotalPrice(){
+        totalPrice.text = "$\(CollectionService.collection.getTotalPrice())0"
+    }
+    
+    func printitsworking(){
+        print("it's working")
     }
 
 }

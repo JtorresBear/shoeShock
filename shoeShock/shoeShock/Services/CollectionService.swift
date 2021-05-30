@@ -64,17 +64,6 @@ class CollectionService {
         }
     }
     
-    func addQuantity(index: Int){
-        selectedShoes[index].quantity += 1
-    }
-    
-    func subtractQuantity(index: Int) {
-        if(selectedShoes[index].quantity - 1 == 0) {
-            selectedShoes.remove(at: index)
-        } else {
-            selectedShoes[index].quantity -= 1
-        }
-    }
     
     func getTopShoes() -> [Shoe] {
         return topShoes
@@ -86,6 +75,20 @@ class CollectionService {
     
     func getSelectedShoes() -> [SelectedShoe] {
         return selectedShoes
+    }
+    
+    func getTotalPrice()-> Double{
+        var totalPrice = 0.0
+        for shoe in selectedShoes {
+            totalPrice += (shoe.shoe.price * shoe.quantity)
+        }
+        
+        return totalPrice
+    }
+    
+    func changeQuantity(of index: Int, number: Double){
+        selectedShoes[index].quantity = number
+        print("\(selectedShoes[index].quantity)")
     }
     
 }
