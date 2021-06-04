@@ -64,6 +64,10 @@ class CollectionService {
         }
     }
     
+    func removeSelectedShoe(index: Int) {
+        selectedShoes.remove(at: index)
+    }
+    
     
     func getTopShoes() -> [Shoe] {
         return topShoes
@@ -89,6 +93,10 @@ class CollectionService {
     func changeQuantity(of index: Int, number: Double){
         selectedShoes[index].quantity = number
         print("\(selectedShoes[index].quantity)")
+        
+        if number == 0 {
+            removeSelectedShoe(index: index)
+        }
     }
     
 }
