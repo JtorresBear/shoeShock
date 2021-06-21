@@ -33,14 +33,13 @@ class CartCell: UITableViewCell {
         stepperCount = sender.value
         var count = 0
         print("Sender value\(sender.value)")
-        while count < CollectionService.instance.getSelectedShoes().count{
-            if UWShoe.name == CollectionService.instance.getSelectedShoes()[count].shoe.name{
-                CollectionService.instance.changeQuantity(of: count, number: stepperCount)
+        while count < CollectionService.collection.getSelectedShoes().count{
+            if UWShoe.name == CollectionService.collection.getSelectedShoes()[count].shoe.name{
+                CollectionService.collection.changeQuantity(of: count, number: stepperCount)
                 if stepperCount == 0 {
-                    CollectionService.instance.changeSelectedStatus(status: false, shoeSelected: UWShoe)
                     cartVC?.cartTable.deleteRows(at: [IndexPath(row: count, section: 0)], with: .fade)
                 } else {
-                    updateCell(shoe: CollectionService.instance.getSelectedShoes()[count].shoe, quantity: CollectionService.instance.getSelectedShoes()[count].quantity)
+                    updateCell(shoe: CollectionService.collection.getSelectedShoes()[count].shoe, quantity: CollectionService.collection.getSelectedShoes()[count].quantity)
                 }
                 
             }

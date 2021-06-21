@@ -1,13 +1,13 @@
 //
-//  TopShoeCell.swift
+//  OtherShoesCollectionViewCell.swift
 //  shoeShock
 //
-//  Created by Juan Torres on 5/11/21.
+//  Created by Juan Torres on 5/19/21.
 //
 
 import UIKit
 
-class TopShoeCell: UICollectionViewCell {
+class OtherShoesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var shoeImage: UIImageView!
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var shoeName: UILabel!
@@ -18,18 +18,19 @@ class TopShoeCell: UICollectionViewCell {
     var shoeSelected = false
     
     func updateViews(shoe: Shoe, row: Int){
-        brandName.text = shoe.brand
-        shoeName.text = shoe.name
-        shoePrice.text = "$\(shoe.price)0"
+        brandName.text  = shoe.brand
+        shoeName.text   = shoe.name
+        shoePrice.text  = "$\(shoe.price)0"
         shoeImage.image = UIImage(named: "Nike\(shoe.number)")
         heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
         self.shoe = shoe
     }
     
-    @IBAction func shoeHearted(_ sender: UIButton) {
+    @IBAction func shoeHearted(_ sender: UIButton){
+        
         if !shoeSelected {
             if let shoe = self.shoe {
-                CollectionService.collection.selectShoe(shoe: shoe, quantity: 1.0 )
+                CollectionService.collection.selectShoe(shoe: shoe, quantity: 1.0)
             }
             //heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
@@ -41,6 +42,7 @@ class TopShoeCell: UICollectionViewCell {
         }
         shoeSelected.toggle()
         print(CollectionService.collection.getSelectedShoes().count)
+        
     }
     
     

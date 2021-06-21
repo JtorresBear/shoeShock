@@ -41,9 +41,8 @@ class ShoeDetailVC: UIViewController {
     
     @IBAction func addToCartTapped(_ sender: Any) {
         guard let shoe = self.shoe, let quantity = Double(quantityLabel.text!) else {return}
-        CollectionService.instance.selectShoeFromDetail(shoe: shoe, quantity: quantity)
-        CollectionService.instance.changeSelectedStatus(status: true, shoeSelected: shoe)
-        print(CollectionService.instance.getSelectedShoes().count)
+        CollectionService.collection.selectShoe(shoe: shoe, quantity: quantity)
+        print(CollectionService.collection.getSelectedShoes().count)
     }
     
     @IBAction func stepperTapped(_ sender: UIStepper) {
