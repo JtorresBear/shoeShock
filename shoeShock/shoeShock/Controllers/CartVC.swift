@@ -14,7 +14,7 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var totalPrice: UILabel!
     
     
-    var selectedShoes = CollectionService.collection.getSelectedShoes()
+    var selectedShoes = CollectionService.instance.getSelectedShoes()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,8 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(CollectionService.collection.getSelectedShoes().count)
-        return CollectionService.collection.getSelectedShoes().count
+        print(CollectionService.instance.getSelectedShoes().count)
+        return CollectionService.instance.getSelectedShoes().count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -44,7 +44,7 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func shoeTotalPrice(){
-        totalPrice.text = "$\(CollectionService.collection.getTotalPrice())0"
+        totalPrice.text = "$\(CollectionService.instance.getTotalPrice())0"
     }
     
     func printitsworking(){

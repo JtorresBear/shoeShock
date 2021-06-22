@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopShoeCell: UICollectionViewCell {
+class ShoeCell: UICollectionViewCell {
     @IBOutlet weak var shoeImage: UIImageView!
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var shoeName: UILabel!
@@ -15,32 +15,35 @@ class TopShoeCell: UICollectionViewCell {
     @IBOutlet weak var heartButton: UIButton!
     
     var shoe: Shoe?
-    var shoeSelected = false
+    
     
     func updateViews(shoe: Shoe, row: Int){
         brandName.text = shoe.brand
         shoeName.text = shoe.name
         shoePrice.text = "$\(shoe.price)0"
         shoeImage.image = UIImage(named: "Nike\(shoe.number)")
-        heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        heartButton.setImage(UIImage(systemName: shoe.selected ? "heart.fill": "heart"), for: .normal)
         self.shoe = shoe
     }
     
     @IBAction func shoeHearted(_ sender: UIButton) {
-        if !shoeSelected {
+        
+        if !shoe!.selected {
             if let shoe = self.shoe {
-                CollectionService.collection.selectShoe(shoe: shoe, quantity: 1.0 )
+                self.shoe!.selected = true
+                CollectionService.instance.selectShoe(shoe: shoe, quantity: 1.0 )
+                CollectionService.instance.changeSelectedStatus(status: true, shoeSelected: shoe)
             }
-            //heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
-        if shoeSelected {
+        else if shoe!.selected {
             if let shoe = self.shoe {
-                CollectionService.collection.removeSelectedShoe(shoe: shoe)
+                self.shoe!.selected = false
+                CollectionService.instance.removeSelectedShoe(shoe: shoe)
+                CollectionService.instance.changeSelectedStatus(status: false, shoeSelected: shoe)
             }
-            //heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
-        shoeSelected.toggle()
-        print(CollectionService.collection.getSelectedShoes().count)
+        updateViews(shoe: self.shoe!, row: self.shoe!.number)
+        print(CollectionService.instance.getSelectedShoes().count)
     }
     
     

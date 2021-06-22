@@ -12,7 +12,7 @@ class DiscoverShoeVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var topShoesCollection: UICollectionView!
     @IBOutlet weak var otherShoesCollection: UICollectionView!
 
-    let shoeCollection = CollectionService.collection
+    let shoeCollection = CollectionService.instance
     
     override func viewWillAppear(_ animated: Bool) {
         topShoesCollection.reloadData()
@@ -27,17 +27,17 @@ class DiscoverShoeVC: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == topShoesCollection {
-            return CollectionService.collection.getTopShoes().count
+            return 5
         } else {
-            return CollectionService.collection.getAllShoes().count
+            return CollectionService.instance.getAllShoes().count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == topShoesCollection {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopShoes", for: indexPath) as? TopShoeCell {
-                let topShoe = shoeCollection.getTopShoes()[indexPath.row]
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopShoes", for: indexPath) as? ShoeCell {
+                let topShoe = shoeCollection.getAllShoes()[indexPath.row]
                 cell.updateViews(shoe: topShoe, row: indexPath.row)
                 return cell
             }
@@ -48,12 +48,12 @@ class DiscoverShoeVC: UIViewController, UICollectionViewDelegate, UICollectionVi
                 return cell
             }
         }
-        return TopShoeCell()
+        return ShoeCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(collectionView == topShoesCollection){
-            let shoe = shoeCollection.getTopShoes()[indexPath.row]
+            let shoe = shoeCollection.getAllShoes()[indexPath.row]
             performSegue(withIdentifier: "ShoeDetail", sender: shoe)
         }
         if(collectionView == otherShoesCollection) {
@@ -62,6 +62,7 @@ class DiscoverShoeVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+
     
     func createCartButton(){
         let barButton = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .done, target: self, action: #selector(cartButtonTapped))
@@ -75,7 +76,7 @@ class DiscoverShoeVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "ShoeDetail") {
             let shoeDetailVC = segue.destination as! ShoeDetailVC
-            shoeDetailVC.shoe = sender as! Shoe
+            shoeDetailVC.shoe = sender as? Shoe
         }
     }
     
