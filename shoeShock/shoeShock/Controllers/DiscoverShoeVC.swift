@@ -42,7 +42,7 @@ class DiscoverShoeVC: UIViewController, UICollectionViewDelegate, UICollectionVi
                 return cell
             }
         } else if collectionView == otherShoesCollection {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OtherShoes", for: indexPath) as? OtherShoesCollectionViewCell {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OtherShoes", for: indexPath) as? ShoeCell {
                 let otherShoe = shoeCollection.getAllShoes()[indexPath.row]
                 cell.updateViews(shoe: otherShoe, row: indexPath.row)
                 return cell

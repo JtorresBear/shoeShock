@@ -46,8 +46,8 @@ class CartCell: UITableViewCell {
             }
             count += 1
         }
-        
         cartVC?.shoeTotalPrice()
+        cartVC?.shoeTotalCount()
     }
     
 }

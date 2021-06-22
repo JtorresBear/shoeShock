@@ -18,9 +18,11 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "buy our shoes"
         cartTable.delegate = self
         cartTable.dataSource = self
         shoeTotalPrice()
+        shoeTotalCount()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,8 +49,26 @@ class CartVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         totalPrice.text = "$\(CollectionService.instance.getTotalPrice())0"
     }
     
+    func shoeTotalCount(){
+        totalShoes.text = "Q: \(CollectionService.instance.getTotalCount())"
+    }
+    
     func printitsworking(){
         print("it's working")
     }
 
+    @IBAction func BuyButtonSelected(_ sender: UIButton) {
+        guard let totalPrice = totalPrice.text else {return}
+        
+        let alert = UIAlertController(title: "CONGRATS", message: "You now own these shoes for a price of \(totalPrice)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+            //DO CHANGES HERE
+            CollectionService.instance.removeAllShoes()
+            self.cartTable.reloadData()
+            self.totalPrice.text = "$0.00"
+            self.totalShoes.text = "Q: 0"
+            CollectionService.instance.deselectAllShoes()
+        }))
+        present(alert, animated: true)
+    }
 }

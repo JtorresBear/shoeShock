@@ -47,12 +47,23 @@ class CollectionService {
             selectedShoes.append(newSelection)
         }
     }
+    func deselectAllShoes(){
+        var count = 0
+        while count < shoes.count {
+            shoes[count].selected = false
+            count += 1
+        }
+    }
     
     func selectShoeFromDetail(shoe: Shoe, quantity: Double){
         if hasSelectedShoe(shoe: shoe) {
             removeSelectedShoe(shoe: shoe)
         }
         selectShoe(shoe: shoe, quantity: quantity)
+    }
+    
+    func removeAllShoes(){
+        selectedShoes = [SelectedShoe]()
     }
     
     func removeSelectedShoe(shoe: Shoe) {
@@ -96,6 +107,14 @@ class CollectionService {
         }
         
         return totalPrice
+    }
+    
+    func getTotalCount() -> Int {
+        var totalShoes = 0
+        for shoe in selectedShoes {
+            totalShoes = totalShoes + Int(shoe.quantity)
+        }
+        return totalShoes
     }
     
     func changeQuantity(of index: Int, number: Double){

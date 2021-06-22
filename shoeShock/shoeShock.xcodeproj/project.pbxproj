@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA182823267DA71F00C5BBC4 /* OtherShoesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA182822267DA71F00C5BBC4 /* OtherShoesCollectionViewCell.swift */; };
 		AA57EC6A264A7A6C00160A09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57EC69264A7A6C00160A09 /* AppDelegate.swift */; };
 		AA57EC6C264A7A6C00160A09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57EC6B264A7A6C00160A09 /* SceneDelegate.swift */; };
 		AA57EC6E264A7A6C00160A09 /* DiscoverShoeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57EC6D264A7A6C00160A09 /* DiscoverShoeVC.swift */; };
@@ -23,7 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA182822267DA71F00C5BBC4 /* OtherShoesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OtherShoesCollectionViewCell.swift; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/OtherShoesCollectionViewCell.swift"; sourceTree = "<group>"; };
 		AA57EC66264A7A6C00160A09 /* shoeShock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shoeShock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA57EC69264A7A6C00160A09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA57EC6B264A7A6C00160A09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				AA57EC84264A873800160A09 /* ShoeCell.swift */,
-				AA182822267DA71F00C5BBC4 /* OtherShoesCollectionViewCell.swift */,
 				AA5CB027265DF463005E797B /* CartCell.swift */,
 			);
 			path = View;
@@ -198,7 +195,6 @@
 				AA5CB026265DF143005E797B /* ShoeDetailVC.swift in Sources */,
 				AA57EC7F264A7DA000160A09 /* Shoe.swift in Sources */,
 				AA57EC6A264A7A6C00160A09 /* AppDelegate.swift in Sources */,
-				AA182823267DA71F00C5BBC4 /* OtherShoesCollectionViewCell.swift in Sources */,
 				AA57EC6C264A7A6C00160A09 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
